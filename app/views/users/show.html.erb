@@ -1,0 +1,10 @@
+<div class="container">
+  <h1 class="title is-3">Profile Page for
+    <%= @user.name %></h1>
+  <p>Username:<%= @user.username %></p>
+  <p>Email:<%= @user.email %></p>
+  Tweets:
+  <% @user.tweets.each do |tweet| %>
+    <li><%= tweet.tweet %></li>
+  <% end %>
+</div>

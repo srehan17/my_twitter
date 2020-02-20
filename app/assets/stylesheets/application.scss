@@ -13,3 +13,37 @@
  *= require_tree .
  *= require_self
  */
+
+@import "bulma";
+
+// To remove asterisks before labels in forms
+abbr[title="required"] {
+  display: none;
+}
+
+// To remove unnecessary whitespace after notitification
+.notification:not(:last-child){
+  margin-bottom: 0;
+}
+
+// To change rounded borders of notification to a rectangular box
+.notification {
+  border-radius: 0;
+}
+
+.pt {
+  padding-top: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+.hint {
+  color: green;
+  font-size: 80%;
+}
+
+input#user_remember_me {
+  margin-right: 7px;
+}

@@ -1,14 +1,107 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MyTwitter</title>
+    <title>My Twitter</title>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
-  </body>
+
+    <% if flash[:notice] %>
+      <div class="notification is-info">
+        <p class="notice"><%= notice %></p>
+      </div>
+    <% end %>
+
+    <% if flash[:alert] %>
+      <div class="notification is-info">
+        <p class="alert"><%= alert %></p>
+      </div>
+    <% end %>
+
+    <section class="hero is-warning">
+      <div class="hero-head">
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+          <div class="navbar-brand">
+            <a class="navbar-item">
+              <%= link_to root_path, class:"level-left" do %>
+              <img class="level-right" src="https://res.cloudinary.com/srehan17/image/upload/v1582171286/my_profile/tweetie.png" alt="Tweetie" width="50" height="100"/>
+            <% end %>
+          </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+
+            <a class="navbar-item">
+              About Us
+            </a>
+
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                More
+              </a>
+
+              <div class="navbar-dropdown">
+                <a class="navbar-item">
+                  Our Team
+                </a>
+                <a class="navbar-item">
+                  Work with Us
+                </a>
+                <a class="navbar-item">
+                  Contact Us
+                </a>
+                <hr class="navbar-divider">
+                <a class="navbar-item">
+                  Report an issue
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="buttons">
+                <% if user_signed_in? %>
+                  <p class="control">
+                    <%= link_to current_user.name, edit_user_registration_path, style: "font-weight: bold; text-transform: uppercase", class: "button is-info" %>
+                    &nbsp;</p>
+                  <p>
+                    <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "button is-info" %>
+                  </p>
+                <% else %>
+                  <p class="control"><%= link_to 'Sign Up', new_user_registration_path, class: "button is-info" %></p>
+                  &nbsp;
+                  <p class="control"><%= link_to 'Sign In', new_user_session_path, class: "button is-info is-light" %></p>
+                  &nbsp;
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 class="title">
+          <span class="is-size-3"><%= yield(:title) %></span>
+          &nbsp;
+
+          <span class="is-size-4">
+            <i class="fa fa-camera" aria-hidden="true"></i>
+          </span>
+        </h1>
+      </div>
+    </div>
+
+  </section>
+
+  <%= yield %>
+
+</body>
 </html>

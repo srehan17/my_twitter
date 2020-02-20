@@ -1,0 +1,18 @@
+<div class="container">
+  <h1 class="title is-3">All Twitter Users</h1>
+  <% @users.each do |user| %>
+    <div class="box">
+      <p>Username:
+        <%= user.username %></p>
+      <p>User Id:
+        <%= user.id %></p>
+      <p>Email:<%= user.email %></p>
+      <p>Tweets:
+        <% user.tweets.each do |tweet| %>
+          <li><%= tweet.tweet %></li>
+          <li><%= tweet.id %></li>
+        <% end %>
+      </p>
+    </div>
+  <% end %>
+</div>
