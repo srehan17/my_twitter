@@ -1,7 +1,5 @@
 # My Twitter
 
-Additional gems/elements used:
-Simple form
-Bulma-rails
-Devise
-Font awesome css styles
+A web app built using Ruby on Rails.
+
+Demo on https://my-twitter7.herokuapp.com/
